@@ -787,7 +787,7 @@ class Plotter:
         for idx, peak in enumerate(peaks_freqs):
             ax_2.axvline(peak, color='cyan', linestyle='dotted', linewidth=1)
             ax_2.annotate(
-                f'Peak {idx + 1}',
+                f'Peak {idx + 1} ({peak:.1f}Hz)',
                 (peak, bins[-1] * 0.9),
                 textcoords='data',
                 color='cyan',
@@ -874,31 +874,6 @@ class Plotter:
         table.set_zorder(100)
         bold_font = matplotlib.font_manager.FontProperties(weight='bold')
         for key, cell in table.get_celld().items():
-            row, col = key
-            cell.set_text_props(ha='center', va='center')
-            if col == 0:
-                cell.get_text().set_fontproperties(bold_font)
-                cell.get_text().set_color(self.KLIPPAIN_COLORS['dark_purple'])
-            if row == 0:
-                cell.get_text().set_fontproperties(bold_font)
-                cell.get_text().set_color(self.KLIPPAIN_COLORS['dark_orange'])
-
-        # Print peaks table
-        peaks_table_data = [
-            [
-                f'{idx}',
-                f'{peak:.1f} Hz',
-            ]
-            for idx, peak in enumerate(peaks_freqs)
-        ]
-
-        peaks_table = plt.table(cellText=peaks_table_data, colLabels=['Peak','Freq'], bbox=None, cellLoc='center')
-        peaks_table.auto_set_font_size(False)
-        peaks_table.set_fontsize(10)
-        peaks_table.auto_set_column_width([0, 1])
-        peaks_table.set_zorder(100)
-        bold_font = matplotlib.font_manager.FontProperties(weight='bold')
-        for key, cell in peaks_table.get_celld().items():
             row, col = key
             cell.set_text_props(ha='center', va='center')
             if col == 0:

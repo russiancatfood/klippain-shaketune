@@ -1202,7 +1202,7 @@ class Plotter:
             for idx, peak in enumerate(vibration_peaks):
                 ax_5.axvline(all_speeds[peak], color='cyan', linewidth=0.75)
                 ax_5.annotate(
-                    f'Peak {idx + 1}',
+                    f'Peak {idx + 1} ({peak:.1f}Hz)',
                     (all_speeds[peak], all_angles[-1] * 0.9),
                     textcoords='data',
                     color='cyan',

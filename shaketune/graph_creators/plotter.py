@@ -892,7 +892,7 @@ class Plotter:
             for idx, peak in enumerate(peaks_freqs)
         ]
 
-        peaks_table = plt.table(cellText=peaks_table_data, colLabels=['Peak','Freq'], bbox=[1.1, 2.0, 0.3, 0.3], cellLoc='center')
+        peaks_table = plt.table(cellText=peaks_table_data, colLabels=['Peak','Freq'], bbox=None, cellLoc='center')
         peaks_table.auto_set_font_size(False)
         peaks_table.set_fontsize(10)
         peaks_table.auto_set_column_width([0, 1])

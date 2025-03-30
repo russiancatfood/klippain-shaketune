@@ -883,6 +883,31 @@ class Plotter:
                 cell.get_text().set_fontproperties(bold_font)
                 cell.get_text().set_color(self.KLIPPAIN_COLORS['dark_orange'])
 
+        # Print peaks table
+        peaks_table_data = [
+            [
+                f'{peak_id}',
+                f'{peak_freq:.1f} Hz',
+            ]
+            for peak_id, peak_freq in list(peaks_freqs.items())
+        ]
+
+        peaks_table = plt.table(cellText=peaks_table_data, colLabels=['Peak','Freq'], bbox=[1.100, 0.535, 0.830, 0.240], cellLoc='center')
+        peaks_table.auto_set_font_size(False)
+        peaks_table.set_fontsize(10)
+        peaks_table.auto_set_column_width([0, 1])
+        peaks_table.set_zorder(100)
+        bold_font = matplotlib.font_manager.FontProperties(weight='bold')
+        for key, cell in peaks_table.get_celld().items():
+            row, col = key
+            cell.set_text_props(ha='center', va='center')
+            if col == 0:
+                cell.get_text().set_fontproperties(bold_font)
+                cell.get_text().set_color(self.KLIPPAIN_COLORS['dark_purple'])
+            if row == 0:
+                cell.get_text().set_fontproperties(bold_font)
+                cell.get_text().set_color(self.KLIPPAIN_COLORS['dark_orange'])
+
         # Add the filter general recommendations and estimated damping ratio
         fig.text(
             0.575,

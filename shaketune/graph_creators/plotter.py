@@ -886,13 +886,13 @@ class Plotter:
         # Print peaks table
         peaks_table_data = [
             [
-                f'{peak_id}',
-                f'{peak_freq:.1f} Hz',
+                f'{idx}',
+                f'{peak:.1f} Hz',
             ]
-            for peak_id, peak_freq in list(peaks_freqs.items())
+            for idx, peak in enumerate(peaks_freqs)
         ]
 
-        peaks_table = plt.table(cellText=peaks_table_data, colLabels=['Peak','Freq'], bbox=[1.100, 0.535, 0.830, 0.240], cellLoc='center')
+        peaks_table = plt.table(cellText=peaks_table_data, colLabels=['Peak','Freq'], bbox=[1.1, 2.0, 0.3, 0.3], cellLoc='center')
         peaks_table.auto_set_font_size(False)
         peaks_table.set_fontsize(10)
         peaks_table.auto_set_column_width([0, 1])
